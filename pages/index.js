@@ -6,16 +6,16 @@ import PostItem from "../components/PostItem";
 export default function Home() {
   const queryClient = useQueryClient();
 
-  // Fetch posts
+  
   const { data: posts, error, isLoading } = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
       const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-      return res.data.slice(0, 10); // Limit to 10 posts
+      return res.data.slice(0, 10); 
     },
   });
 
-  // Delete post mutation
+  
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
       await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
